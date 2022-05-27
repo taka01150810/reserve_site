@@ -11,4 +11,10 @@ class LivewireTestController extends Controller
     {
         return view('livewire-test.index');
     }
+
+    public function register()
+    {
+        return view('livewire-test.register');
+    }
+
 }
