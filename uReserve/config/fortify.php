@@ -130,6 +130,11 @@ return [
     | these features or you can even remove all of these if you need to.
     |
     */
+    /* オプション機能のOnOff
+    ユーザー登録、パスワードリセット、メール認証、
+    プロフィール情報更新、パスワード変更、2要素認証を
+    On/Offできる
+    */
 
     'features' => [
         Features::registration(),
@@ -137,11 +142,11 @@ return [
         // Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
-        Features::twoFactorAuthentication([
-            'confirm' => true,
-            'confirmPassword' => true,
-            // 'window' => 0,
-        ]),
+        // Features::twoFactorAuthentication([
+        //     'confirm' => true,
+        //     'confirmPassword' => true,
+        //     // 'window' => 0,
+        // ]),
     ],
 
 ];

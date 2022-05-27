@@ -56,7 +56,9 @@ return [
     | these features or you can even remove all of these if you need to.
     |
     */
-
+    /* オプション機能のOnOff
+    チーム、プロフィール画像、アカウント削除、api
+    */
     'features' => [
         // Features::termsAndPrivacyPolicy(),
         // Features::profilePhotos(),
