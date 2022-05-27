@@ -153,6 +153,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        //エラーの日本語対応
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+    ],
 
 ];
