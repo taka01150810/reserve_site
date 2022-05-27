@@ -21,6 +21,12 @@ class Register extends Component
         'password' => 'required|string|min:8',
     ];
 
+    //リアルタイムバリデーション(入力しながらエラーメッセージが表示される)
+    public function updated($property)
+    {
+        $this->validateOnly($property);
+    }
+
     public function register()
     {
         $this->validate();
