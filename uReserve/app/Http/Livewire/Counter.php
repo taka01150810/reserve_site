@@ -10,6 +10,18 @@ class Counter extends Component
     
     public $name = ''; 
 
+    public function mount()//render描画前に実行(constructorのように)
+    {
+        $this->name = '初期値です。';//初期値が 初期値です。
+    }
+
+    public function updated()
+    {
+        $this->name = '更新値です。';
+        // 更新するごとに
+        //結果 こんにちは、更新値です。さん
+    }
+
     public function increment()
     {
         $this->count++;
