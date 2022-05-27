@@ -37,6 +37,9 @@ class Register extends Component
             'password' => Hash::make($this->password),
         ]);
 
+        session()->flash('message', '登録OKです');
+
+        return to_route('livewire-test.index');//Laravel9新機能 
     }
 
     public function render()

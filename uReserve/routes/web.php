@@ -29,8 +29,9 @@ Route::middleware([
 });
 
 //Laravel9からcontrollerでまとめる事ができる 
+//name('?')でname('?.〜')をまとめることができる。
 Route::controller(LivewireTestController::class)
-->prefix('livewire-test')->group(function(){
-    Route::get('index', 'index');
-    Route::get('register', 'register');
+->prefix('livewire-test')->name('livewire-test.')->group(function(){
+    Route::get('index', 'index')->name('index');
+    Route::get('register', 'register')->name('register');
 });
