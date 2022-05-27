@@ -22,6 +22,11 @@ class Counter extends Component
         //結果 こんにちは、更新値です。さん
     }
 
+    public function mouseOver()
+    {
+        $this->name = 'mouseover';
+    }
+
     public function increment()
     {
         $this->count++;

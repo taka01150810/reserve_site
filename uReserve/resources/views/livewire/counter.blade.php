@@ -28,4 +28,9 @@
     {{-- defer ... submitボタンなどを押したタイミングで通信 --}}
     こんにちは、{{ $name }}さん
 
+    <button wire:mouseover="mouseOver">マウスを合わせてね</button>
+    {{-- 
+        マウスを合わせると 
+        結果こんにちは、mouseoverさん。
+    --}}
 </div>
