@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 //php artisan make:livewire register で作成
 class Register extends Component
@@ -13,16 +15,22 @@ class Register extends Component
     
     public $password;
 
+    protected $rules = [
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8',
+    ];
+
     public function register()
     {
-         dd($this);//$thisで$name,$email,$passwordの値を取得できる
-         /* 結果
-         ^ App\Http\Livewire\Register {#547 ▼
-            +name: "Takatoshi Miyanaka"
-            +email: "taka01150810@gmail.com"
-            +password: "aaa"
-            +id: "DmCCVBDHPlg0r7vd1kxm"
-         */
+        $this->validate();
+
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
+
     }
 
     public function render()
