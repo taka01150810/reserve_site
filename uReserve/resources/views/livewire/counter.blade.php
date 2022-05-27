@@ -5,6 +5,7 @@
     <button wire:click="increment">+</button>
     {{-- Counterクラス内プロパティを表示 --}}
     <h1>{{ $count }}</h1>
+    {{-- 結果 https://i.gyazo.com/456aeb863dd8c810cc37ab0bc9d2ddc9.png --}}
 
     <div class="mb-8"></div>
     <input type="text" wire:model="name"><br>
