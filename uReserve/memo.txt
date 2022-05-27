@@ -6,3 +6,11 @@ APP_URL=http://127.0.0.1:8000
 に変更
 
 php artisan storage:link でpublic/storageにリンク作成
+
+Livewireとは
+PHPのみでVueやReactのようなリアクティブな動的コンポーネントを作成できるライブラリ
+Blade構文を使えるのでLaravelと相性がいい
+
+Livewireのデメリット
+裏側でAjaxを使いサーバー通信しているため、
+JavaScriptライブラリより多少表示スピードが遅い
