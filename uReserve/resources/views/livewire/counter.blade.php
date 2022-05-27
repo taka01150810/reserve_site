@@ -12,4 +12,20 @@
     こんにちは、{{ $name }}さん
     {{-- 結果 https://gyazo.com/82016b6970069b31bb2d4c024eb2d620 --}}
 
+    <div class="mb-8"></div>
+    <input type="text" wire:model.debounce.2000ms="name"><br>
+    {{-- ms ... 待って通信 1000ms = 1秒 --}}
+    こんにちは、{{ $name }}さん
+    {{-- 2秒待って表示される --}}
+
+    <div class="mb-8"></div>
+    <input type="text" wire:model.lazy="name"><br>
+    {{-- lazy ... フォーカスが外れたタイミングで通信(JSのchangeイベント) --}}
+    こんにちは、{{ $name }}さん
+
+    <div class="mb-8"></div>
+    <input type="text" wire:model.defer="name"><br>
+    {{-- defer ... submitボタンなどを押したタイミングで通信 --}}
+    こんにちは、{{ $name }}さん
+
 </div>
