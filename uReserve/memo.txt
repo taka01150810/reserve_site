@@ -44,3 +44,6 @@ Role(役割)の考え方
 9・・user
 あとからmanagerとuserの間(有料会員)の権限なども
 追加しやすい
+
+php artisan vendor:publish - ̶tag=laravel-errorsで
+カスタムエラーページを作成
