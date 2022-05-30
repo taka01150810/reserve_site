@@ -18,3 +18,10 @@ JavaScriptライブラリより多少表示スピードが遅い
 Alpine.jsとはHTML内にJavascriptがかける
 TailwindcssのJavaScript版
 VueやReactよりシンプルで、Vueの構文に似ている。
+
+アプリ名はenvファイルで設定。
+APP_NAME=uReserve
+その後、config/app.php内で設定される
+
+publicフォルダに直接置く...初期ファイル
+storageフォルダ...フォルダ内画像はgitHubにアップしない
