@@ -25,3 +25,22 @@ APP_NAME=uReserve
 
 publicフォルダに直接置く...初期ファイル
 storageフォルダ...フォルダ内画像はgitHubにアップしない
+
+認可(アクセス制限)
+manager..表示・操作できる、
+user...表示・操作できない
+これらをLaravelではGate、Policyで対応
+Gate...シンプル
+Policy...特定のモデル・アクションを認可
+事前にrole列を追記しておく
+
+Role(役割)の考え方
+追って追加する可能性も考慮しておく
+数字の少ない方が権限が強い
+1・・admin,
+2, 3, 4,
+5・・manager,
+6,7,8,
+9・・user
+あとからmanagerとuserの間(有料会員)の権限なども
+追加しやすい

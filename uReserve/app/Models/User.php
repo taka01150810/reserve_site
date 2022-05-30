@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',//User::create()でまとめて登録できるようにするため 
     ];
 
     /**
