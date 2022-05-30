@@ -14,3 +14,7 @@ Blade構文を使えるのでLaravelと相性がいい
 Livewireのデメリット
 裏側でAjaxを使いサーバー通信しているため、
 JavaScriptライブラリより多少表示スピードが遅い
+
+Alpine.jsとはHTML内にJavascriptがかける
+TailwindcssのJavaScript版
+VueやReactよりシンプルで、Vueの構文に似ている。
