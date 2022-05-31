@@ -1,0 +1,8 @@
+//結果が下記
+  GET|HEAD        manager/events .............. events.index › EventController@index
+  POST            manager/events .............. events.store › EventController@store
+  GET|HEAD        manager/events/create ..... events.create › EventController@create
+  GET|HEAD        manager/events/{event} ........ events.show › EventController@show
+  PUT|PATCH       manager/events/{event} .... events.update › EventController@update
+  DELETE          manager/events/{event} .. events.destroy › EventController@destroy
+  GET|HEAD        manager/events/{event}/edit ... events.edit › EventController@edit
