@@ -8,7 +8,7 @@
     <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="max-w-2xl mx-auto">
+                <div class="max-w-2xl mx-auto py-4">
                     <x-jet-validation-errors class="mb-4" />
 
                     @if (session('status'))
@@ -23,6 +23,10 @@
                         <div>
                             <x-jet-label for="event_name" value="イベント名" />
                             <x-jet-input id="event_name" class="block mt-1 w-full" type="text" name="event_name" :value="old('even')" required autofocus />
+                        </div>
+                        <div>
+                            <x-jet-label for="information" value="イベント詳細" />
+                            <x-textarea row="3" id="information" class="block mt-1 w-full">{{ old('information')}}</x-textarea>
                         </div>
 
 
@@ -41,7 +45,15 @@
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="md:flex justify-between items-end">
+                            <div class="mt-4">
+                                <x-jet-label for="max_people" value="定員数" />
+                                <x-jet-input id="max_people" class="block mt-1 w-full" type="number" name="max_people" required />
+                            </div>
+                            <div class="flex space-x-4 justify-around">
+                                <input type="radio" name="is_visible" value="1" checked />表示
+                                <input type="radio" name="is_visible" value="2" checked />非表示
+                            </div>
                             <x-jet-button class="ml-4">
                                 新規登録
                             </x-jet-button>
