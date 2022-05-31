@@ -1,5 +1,4 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/flatpickr/dist/esm/index.js":
@@ -8,6 +7,7 @@
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -2076,6 +2076,7 @@ if (typeof window !== "undefined") {
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
@@ -2163,6 +2164,7 @@ var english = {
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HOOKS": () => (/* binding */ HOOKS),
@@ -2261,6 +2263,7 @@ var defaults = {
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "calculateSecondsSinceMidnight": () => (/* binding */ calculateSecondsSinceMidnight),
@@ -2429,6 +2432,7 @@ function getDefaultHours(config) {
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "clearNode": () => (/* binding */ clearNode),
@@ -2502,6 +2506,7 @@ function getEventTarget(event) {
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "formats": () => (/* binding */ formats),
@@ -2654,6 +2659,7 @@ var formats = {
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "arrayify": () => (/* binding */ arrayify),
@@ -2688,6 +2694,7 @@ var arrayify = function (obj) {
   \************************************************************/
 /***/ (() => {
 
+"use strict";
 
 if (typeof Object.assign !== "function") {
     Object.assign = function (target) {
@@ -2712,6 +2719,86 @@ if (typeof Object.assign !== "function") {
 }
 
 
+/***/ }),
+
+/***/ "./node_modules/flatpickr/dist/l10n/ja.js":
+/*!************************************************!*\
+  !*** ./node_modules/flatpickr/dist/l10n/ja.js ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+(function (global, factory) {
+   true ? factory(exports) :
+  0;
+}(this, (function (exports) { 'use strict';
+
+  var fp = typeof window !== "undefined" && window.flatpickr !== undefined
+      ? window.flatpickr
+      : {
+          l10ns: {},
+      };
+  var Japanese = {
+      weekdays: {
+          shorthand: ["日", "月", "火", "水", "木", "金", "土"],
+          longhand: [
+              "日曜日",
+              "月曜日",
+              "火曜日",
+              "水曜日",
+              "木曜日",
+              "金曜日",
+              "土曜日",
+          ],
+      },
+      months: {
+          shorthand: [
+              "1月",
+              "2月",
+              "3月",
+              "4月",
+              "5月",
+              "6月",
+              "7月",
+              "8月",
+              "9月",
+              "10月",
+              "11月",
+              "12月",
+          ],
+          longhand: [
+              "1月",
+              "2月",
+              "3月",
+              "4月",
+              "5月",
+              "6月",
+              "7月",
+              "8月",
+              "9月",
+              "10月",
+              "11月",
+              "12月",
+          ],
+      },
+      time_24hr: true,
+      rangeSeparator: " から ",
+      monthAriaLabel: "月",
+      amPM: ["午前", "午後"],
+      yearAriaLabel: "年",
+      hourAriaLabel: "時間",
+      minuteAriaLabel: "分",
+  };
+  fp.l10ns.ja = Japanese;
+  var ja = fp.l10ns;
+
+  exports.Japanese = Japanese;
+  exports.default = ja;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+
+
 /***/ })
 
 /******/ 	});
@@ -2734,7 +2821,7 @@ if (typeof Object.assign !== "function") {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -2783,15 +2870,39 @@ if (typeof Object.assign !== "function") {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
 /*!***********************************!*\
   !*** ./resources/js/flatpickr.js ***!
   \***********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flatpickr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! flatpickr */ "./node_modules/flatpickr/dist/esm/index.js");
+/* harmony import */ var flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! flatpickr/dist/l10n/ja.js */ "./node_modules/flatpickr/dist/l10n/ja.js");
+/* harmony import */ var flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_1__);
 
-(0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#event_date", {});
+(0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#event_date", {}); //日本語設定
+
+
+(0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#event_date", {
+  locale: flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_1__.Japanese,
+  minDate: "today",
+  //今日以降
+  maxDate: new Date().fp_incr(30) //30日間表示
+
+}); // 時間表示、カレンダー非表示、24時間表記
+
+var setting = {
+  "locale": flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_1__.Japanese,
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i",
+  time_24hr: true,
+  minTime: "10:00",
+  maxTime: "20:00"
+};
+(0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#start_time", setting);
+(0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#end_time", setting);
 })();
 
 /******/ })()
