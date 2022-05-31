@@ -51,3 +51,8 @@ php artisan vendor:publish - ̶tag=laravel-errorsで
 php artisan vendor:publish --tag=laravel-pagination
 でresouce/views/vendor/paginationフォルダに作成
 今回はtailwind.blade.phpを修正
+
+flatpickr v4
+日付・時間を選択
+デートピッカーの1つ
+設置が簡単、軽量、jQueryなし
