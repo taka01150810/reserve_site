@@ -1188,6 +1188,9 @@ select {
 .max-w-xl {
   max-width: 36rem;
 }
+.max-w-2xl {
+  max-width: 42rem;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -1524,10 +1527,6 @@ select {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.py-24 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1557,9 +1556,6 @@ select {
 }
 .pb-1 {
   padding-bottom: 0.25rem;
-}
-.pl-4 {
-  padding-left: 1rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -2927,8 +2923,8 @@ span.flatpickr-weekday {
     margin-top: 0px;
   }
 
-  .md\:mb-2 {
-    margin-bottom: 0.5rem;
+  .md\:flex {
+    display: flex;
   }
 
   .md\:grid {
@@ -2959,10 +2955,6 @@ span.flatpickr-weekday {
 
   .lg\:col-span-4 {
     grid-column: span 4 / span 4;
-  }
-
-  .lg\:mb-0 {
-    margin-bottom: 0px;
   }
 
   .lg\:w-2\/3 {
