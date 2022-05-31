@@ -47,3 +47,7 @@ Role(役割)の考え方
 
 php artisan vendor:publish - ̶tag=laravel-errorsで
 カスタムエラーページを作成
+
+php artisan vendor:publish --tag=laravel-pagination
+でresouce/views/vendor/paginationフォルダに作成
+今回はtailwind.blade.phpを修正
