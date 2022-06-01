@@ -46,6 +46,27 @@ class EventController extends Controller
     public function store(StoreEventRequest $request)
     {
         /*
+        同じ時間帯に複数のイベントは作成できない
+
+        新規の開始時間 < 登録済の終了時間 AND
+        新規の終了時間 > 登録済の開始時間
+        を満たす場合、重複している
+        */
+        $check = DB::table('events')
+        ->whereDate('start_date', $request['event_date'])//日にち
+        ->whereTime('end_date' ,'>',$request['start_time'])
+        ->whereTime('start_date', '<', $request['end_time'])
+        ->exists();//存在確認
+        
+        //dd($check);
+        //結果 重複してたらfalse。重複してなかったらtrue
+
+        if($check){
+            session()->flash('status', 'この時間帯は既に他の予約が存在します。');
+            return view('manager.events.create');
+        }
+
+        /*
         formはevent_date,start_time,end_time 
         modelはstart_date,end_date
         formから渡ってくるデータをくっつけてからDB保存
