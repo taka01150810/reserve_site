@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;//クエリビルダ
+use Carbon\Carbon;
 
 //php artisan make:model Event -a で作成
 class EventController extends Controller
@@ -44,8 +45,31 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
-        //
-        dd($request);
+        /*
+        formはevent_date,start_time,end_time 
+        modelはstart_date,end_date
+        formから渡ってくるデータをくっつけてからDB保存
+        */
+        $start = $request['event_date'] . " " . $request['start_time'];
+        $startDate = Carbon::createFromFormat(
+            'Y-m-d H:i', $start
+        );
+        $end = $request['event_date'] . " " . $request['end_time'];
+        $endDate = Carbon::createFromFormat(
+            'Y-m-d H:i', $end
+        );
+
+        Event::create([
+            'name' => $request['event_name'],
+            'information' => $request['information'],
+            'start_date' => $startDate,
+            'end_date' => $endDate,
+            'max_people' => $request['max_people'],
+            'is_visible' => $request['is_visible'],
+        ]);
+
+        session()->flash('status', '登録できました');
+        return to_route('events.index');//名前付きルート
     }
 
     /**

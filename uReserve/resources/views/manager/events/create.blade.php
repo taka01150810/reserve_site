@@ -26,7 +26,7 @@
                         </div>
                         <div>
                             <x-jet-label for="information" value="イベント詳細" />
-                            <x-textarea row="3" id="information" class="block mt-1 w-full">{{ old('information')}}</x-textarea>
+                            <x-textarea row="3" id="information" name="information" class="block mt-1 w-full">{{ old('information')}}</x-textarea>
                         </div>
 
 
