@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
 use Illuminate\Support\Facades\DB;//クエリビルダ
 use Carbon\Carbon;
+use App\Services\EventService;
 
 //php artisan make:model Event -a で作成
 class EventController extends Controller
@@ -45,40 +46,16 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
-        /*
-        同じ時間帯に複数のイベントは作成できない
-
-        新規の開始時間 < 登録済の終了時間 AND
-        新規の終了時間 > 登録済の開始時間
-        を満たす場合、重複している
-        */
-        $check = DB::table('events')
-        ->whereDate('start_date', $request['event_date'])//日にち
-        ->whereTime('end_date' ,'>',$request['start_time'])
-        ->whereTime('start_date', '<', $request['end_time'])
-        ->exists();//存在確認
-        
-        //dd($check);
-        //結果 重複してたらfalse。重複してなかったらtrue
+        $check = EventService::checkEventDuplication($request['event_date'],$request['start_time'],$request['end_time']);
 
         if($check){
             session()->flash('status', 'この時間帯は既に他の予約が存在します。');
             return view('manager.events.create');
         }
 
-        /*
-        formはevent_date,start_time,end_time 
-        modelはstart_date,end_date
-        formから渡ってくるデータをくっつけてからDB保存
-        */
-        $start = $request['event_date'] . " " . $request['start_time'];
-        $startDate = Carbon::createFromFormat(
-            'Y-m-d H:i', $start
-        );
-        $end = $request['event_date'] . " " . $request['end_time'];
-        $endDate = Carbon::createFromFormat(
-            'Y-m-d H:i', $end
-        );
+        $startDate = EventService::joinDateAndTime($request['event_date'], $request['start_time']);
+        $endDate = EventService::joinDateAndTime($request['event_date'], $request['end_time']);
+
 
         Event::create([
             'name' => $request['event_name'],
