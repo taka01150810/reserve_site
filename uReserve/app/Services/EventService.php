@@ -38,4 +38,17 @@ class EventService
         );
         return $dateTime;
      }
+
+   /*
+   既にイベントが存在しているので、
+   重複しているのが1件なら問題なく、1件より多ければエラー
+   */
+     public static function countEventDuplication($eventDate, $startTime, $endTime)
+      {
+         return DB::table('events')
+         ->whereDate('start_date', $eventDate)
+         ->whereTime('end_date' ,'>',$startTime)
+         ->whereTime('start_date', '<', $endTime)
+         ->count();
+      }
 }

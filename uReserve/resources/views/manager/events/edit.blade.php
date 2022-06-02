@@ -34,15 +34,15 @@
                         <div class="md:flex justify-between">
                             <div class="mt-4">
                                 <x-jet-label for="event_date" value="イベント日付" />
-                                <x-jet-input id="event_date" class="block mt-1 w-full" type="event_date" value="{{ $event->eventDate }}" name="event_date" required />
+                                <x-jet-input id="event_date" class="block mt-1 w-full" type="event_date" value="{{ $eventDate }}" name="event_date" required />
                             </div>
                             <div class="mt-4">
                                 <x-jet-label for="start_time" value="開始時間" />
-                                <x-jet-input id="start_time" class="block mt-1 w-full" type="start_time" value="{{ $event->startTime }}" name="start_time" required />
+                                <x-jet-input id="start_time" class="block mt-1 w-full" type="start_time" value="{{ $startTime }}" name="start_time" required />
                             </div>
                             <div class="mt-4">
                                 <x-jet-label for="end_time" value="終了時間" />
-                                <x-jet-input id="end_time" class="block mt-1 w-full" type="end_time" value="{{ $event->endTime }}" name="end_time" required />
+                                <x-jet-input id="end_time" class="block mt-1 w-full" type="end_time" value="{{ $endTime }}" name="end_time" required />
                             </div>
                         </div>
 
