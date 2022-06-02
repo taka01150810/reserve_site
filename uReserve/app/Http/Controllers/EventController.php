@@ -80,7 +80,19 @@ class EventController extends Controller
     {
         //
         $event = Event::findOrFail($event->id);
-        return view('manager.events.show', compact('event'));
+
+        $eventDate = $event->eventDate;
+        $startTime = $event->startTime;
+        $endTime = $event->endTime;
+        // dd($eventDate, $startTime, $endTime);
+        /* 結果
+        ^ "2022年06月16日"
+        ^ "12時00分"
+        ^ "13時00分"
+        */
+        
+        return view('manager.events.show',
+        compact('event', 'eventDate', 'startTime', 'endTime'));
     }
 
     /**
