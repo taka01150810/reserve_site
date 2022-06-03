@@ -31,8 +31,14 @@ Route::middleware([
     })->name('dashboard');
 });
 
+/*
+ルーティングは上から処理される
+リソースの下に書くと /past部分がパラメータと勘違いされるので
+リソースの上に書く
+*/
 Route::prefix('manager')
 ->middleware('can:manager-higher')->group(function(){
+    Route::get('events/past', [EventController::class, 'past'])->name('events.past');
     Route::resource('events', EventController::class);
 });
 
