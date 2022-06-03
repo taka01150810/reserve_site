@@ -20,7 +20,10 @@ class EventController extends Controller
     public function index()
     {
         //
+        $today = Carbon::today();
+        
         $events = DB::table('events')
+        ->whereDate('start_date', '>=' , $today)
         ->orderBy('start_date', 'asc')//開始日時順
         ->paginate(10);//10件ずつ
 
