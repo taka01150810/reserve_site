@@ -26,7 +26,7 @@ class EventController extends Controller
         $reservedPeople = DB::table('reservations')
         ->select('event_id', DB::raw('sum(number_of_people) as number_of_people'))
         ->groupBy('event_id');
-        dd($reservedPeople);
+        // dd($reservedPeople);
         /* 結果
           +columns: array:2 [▼
             0 => "event_id"
@@ -37,6 +37,10 @@ class EventController extends Controller
         */
 
         $events = DB::table('events')
+        ->leftJoinSub($reservedPeople, 'reservedPeople',
+        function($join){
+            $join->on('events.id', '=', 'reservedPeople.event_id');
+        })
         ->whereDate('start_date', '>=' , $today)
         ->orderBy('start_date', 'asc')//開始日時順
         ->paginate(10);//10件ずつ
