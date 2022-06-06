@@ -102,6 +102,20 @@ class EventController extends Controller
         //
         $event = Event::findOrFail($event->id);
 
+        $users = $event->users;
+        //dd($event, $users); 
+        /* 結果
+        #relations: array:1 [▼
+            "users" => Illuminate\Database\Eloquent\Collection {#1545 ▼
+            #items: array:2 [▼
+                ユーザー情報を取得できている
+                0 => App\Models\User {#1543 ▶}
+                1 => App\Models\User {#1556 ▶}
+            ]
+            #escapeWhenCastingToString: false
+            }
+        ]
+        */
         $eventDate = $event->eventDate;
         $startTime = $event->startTime;
         $endTime = $event->endTime;
@@ -113,7 +127,7 @@ class EventController extends Controller
         */
         
         return view('manager.events.show',
-        compact('event', 'eventDate', 'startTime', 'endTime'));
+        compact('event','users','eventDate', 'startTime', 'endTime'));
     }
 
     /**

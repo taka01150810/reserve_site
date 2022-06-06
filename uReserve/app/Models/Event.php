@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
+use App\Models\User;
 
 //php artisan make:model Event -a で作成
 class Event extends Model
@@ -47,5 +48,14 @@ class Event extends Model
         return new Attribute(
             get: fn () => Carbon::parse($this->end_date)->format('H時i分'),
         );
+    }
+    /*
+    belongsToMany...多対多のリレーション、第２引数は中間テーブル名
+    withPivotで中間テーブル内の取得したい情報を指定
+    */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'reservations')
+        ->withPivot('id', 'number_of_people', 'canceled_date');
     }
 }

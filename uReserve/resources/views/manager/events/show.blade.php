@@ -75,5 +75,17 @@
             </div>
         </div>
     </div>
+    <div class="py-4">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="max-w-2xl mx-auto py-4">
+                    @if (!$users->isEmpty())
+                    {{-- 予約状況があったら表示 --}}
+                    予約情報
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="{{ mix('js/flatpickr.js')}}"></script>
 </x-app-layout>
