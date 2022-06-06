@@ -82,6 +82,12 @@
                     @if (!$users->isEmpty())
                     {{-- 予約状況があったら表示 --}}
                     予約情報
+                    @foreach($reservations as $reservation)
+                        @if(is_null($reservation['canceled_date']))
+                        {{ $reservation['name'] }}
+                        {{ $reservation['number_of_people']}}
+                        @endif
+                    @endforeach
                     @endif
                 </div>
             </div>

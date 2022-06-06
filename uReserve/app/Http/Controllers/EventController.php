@@ -116,6 +116,33 @@ class EventController extends Controller
             }
         ]
         */
+
+        $reservations = []; // 連想配列を作成
+
+        foreach($users as $user){
+            $reservedInfo = [
+                'name' => $user->name,
+                'number_of_people' => $user->pivot->number_of_people,
+                'canceled_date' => $user->pivot->canceled_date,
+            ];
+            array_push($reservations, $reservedInfo);//連想配列に追加
+        }
+        //dd($reservations);
+        /* 結果
+        ^ array:2 [▼
+        0 => array:3 [▼
+            "name" => "admin"
+            "number_of_people" => 5
+            "canceled_date" => null
+        ]
+        1 => array:3 [▼
+            "name" => "manager"
+            "number_of_people" => 3
+            "canceled_date" => null
+        ]
+        ]
+        */
+
         $eventDate = $event->eventDate;
         $startTime = $event->startTime;
         $endTime = $event->endTime;
@@ -127,7 +154,7 @@ class EventController extends Controller
         */
         
         return view('manager.events.show',
-        compact('event','users','eventDate', 'startTime', 'endTime'));
+        compact('event','users','reservations','eventDate','startTime','endTime'));
     }
 
     /**
