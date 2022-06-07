@@ -38,6 +38,18 @@ class Calendar extends Component
         */
     }
 
+    //datepickerを変更したら値も変える
+    public function getDate($date)
+    {
+        $this->currentDate = $date; //文字列
+        $this->currentWeek = [];
+        for($i = 0; $i < 7; $i++ )
+        {
+            $this->day = Carbon::parse($this->currentDate)->addDays($i)->format('m月d日'); // parseでCarbonインスタンスに変換後 日付を加算
+            array_push($this->currentWeek, $this->day);
+        }
+    }
+
     public function render()
     {
         return view('livewire.calendar');
