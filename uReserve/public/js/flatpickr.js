@@ -2893,8 +2893,7 @@ __webpack_require__.r(__webpack_exports__);
 });
 (0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#calendar", {
   locale: flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_1__.Japanese,
-  minDate: "today",
-  //今日以降
+  // minDate: "today",//今日以降 //過去も表示できるようにする
   maxDate: new Date().fp_incr(30) //30日間表示
 
 }); // 時間表示、カレンダー非表示、24時間表記

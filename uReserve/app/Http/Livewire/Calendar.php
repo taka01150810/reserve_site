@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Carbon\Carbon;
+use App\Services\EventService;
 
 //php artisan make:livewire Calendar で作成
 class Calendar extends Component
@@ -14,10 +15,21 @@ class Calendar extends Component
 
     public $currentWeek;
 
+    public $sevenDaysLater;
+
+    public $events;
+    
     public function mount()
     {
         $this->currentDate = Carbon::today();
+        $this->sevenDaysLater = $this->currentDate->addDays(7);
         $this->currentWeek = [];
+
+        $this->events = EventService::getWeekEvents(
+            $this->currentDate->format('Y-m-d'),
+            $this->sevenDaysLater->format('Y-m-d'),
+        );
+
         //7日分の情報を取得
         for($i = 0; $i < 7; $i++ )
         {
@@ -43,6 +55,13 @@ class Calendar extends Component
     {
         $this->currentDate = $date; //文字列
         $this->currentWeek = [];
+        $this->sevenDaysLater = Carbon::parse($this->currentDate)->addDays(7);
+
+        $this->events = EventService::getWeekEvents(
+            $this->currentDate,
+            $this->sevenDaysLater->format('Y-m-d'),
+        );
+
         for($i = 0; $i < 7; $i++ )
         {
             $this->day = Carbon::parse($this->currentDate)->addDays($i)->format('m月d日'); // parseでCarbonインスタンスに変換後 日付を加算

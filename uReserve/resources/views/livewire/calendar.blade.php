@@ -15,4 +15,7 @@
             06月09日 06月10日 06月11日 06月12日 06月13日 06月14日 06月15日(指定した日付+7日分)
         --}}
     </div>
+    @foreach($events as $event)
+    {{ $event->start_date }}<br>
+    @endforeach
 </div>

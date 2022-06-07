@@ -51,4 +51,22 @@ class EventService
          ->whereTime('start_date', '<', $endTime)
          ->count();
       }
+
+      //サービスの切り離し
+      public static function getWeekEvents($startDate, $endDate){
+         $reservedPeople = DB::table('reservations')
+         ->select('event_id', DB::raw('sum(number_of_people) as number_of_people'))
+         ->whereNull('canceled_date')
+         ->groupBy('event_id');
+   
+         return DB::table('events')
+         ->leftJoinSub($reservedPeople, 'reservedPeople',
+         function($join){
+             $join->on('events.id', '=', 'reservedPeople.event_id');
+         })
+         //whereBetween ... カラムの値が2つの値の間にある条件を迎える
+         ->whereBetween('start_date', [$startDate, $endDate])
+         ->orderBy('start_date', 'desc')
+         ->get();
+      }
 }

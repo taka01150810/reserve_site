@@ -9,8 +9,10 @@ flatpickr("#event_date", { locale : Japanese, minDate: "today",//今日以降
 maxDate: new Date().fp_incr(30)//30日間表示
 });
 
-flatpickr("#calendar", { locale : Japanese, minDate: "today",//今日以降
-maxDate: new Date().fp_incr(30)//30日間表示
+flatpickr("#calendar", {
+    locale : Japanese, 
+    // minDate: "today",//今日以降 //過去も表示できるようにする
+    maxDate: new Date().fp_incr(30)//30日間表示
 });
 
 // 時間表示、カレンダー非表示、24時間表記
