@@ -2890,6 +2890,13 @@ __webpack_require__.r(__webpack_exports__);
   //今日以降
   maxDate: new Date().fp_incr(30) //30日間表示
 
+});
+(0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#calendar", {
+  locale: flatpickr_dist_l10n_ja_js__WEBPACK_IMPORTED_MODULE_1__.Japanese,
+  minDate: "today",
+  //今日以降
+  maxDate: new Date().fp_incr(30) //30日間表示
+
 }); // 時間表示、カレンダー非表示、24時間表記
 
 var setting = {
@@ -2899,7 +2906,9 @@ var setting = {
   dateFormat: "H:i",
   time_24hr: true,
   minTime: "10:00",
-  maxTime: "20:00"
+  maxTime: "20:00",
+  minuteIncrement: 30 //30分単位
+
 };
 (0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#start_time", setting);
 (0,flatpickr__WEBPACK_IMPORTED_MODULE_0__["default"])("#end_time", setting);
