@@ -14,7 +14,16 @@
             <div class="py-1 px-2 border border-gray-200 text-center">{{ $currentWeek[$i]['day'] }}</div>
             <div class="py-1 px-2 border border-gray-200 text-center">{{ $currentWeek[$i]['dayOfWeek'] }}</div>
         @for($j = 0; $j < 21; $j++)
-        <div class="py-1 px-2 h-8 border border-gray-200"></div>
+            {{-- １週間通じてイベントがない可能性 --}}
+            @if($events->isNotEmpty())
+            <div class="py-1 px-2 h-8 border border-gray-200">{{ \Constant::EVENT_TIME[$j] }}</div>
+            {{-- 結果
+            https://i.gyazo.com/28f4e3b6a604e0534394468c684088be.png --}}
+            @else
+            <div class="py-1 px-2 h-8 border border-gray-200"></div>
+            {{-- 結果
+            https://i.gyazo.com/068c439bda7a620d5d705f7f7a5a5427.png --}}
+            @endif
         @endfor
         </div>
         @endfor
