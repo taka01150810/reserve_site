@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use App\Services\EventService;
 
 //php artisan make:livewire Calendar で作成
@@ -21,7 +21,14 @@ class Calendar extends Component
     
     public function mount()
     {
-        $this->currentDate = Carbon::today();
+        /*
+        Carbonはミュータブル(可変)とイミュータブル(不変)がある
+        デフォルトはミュータブル。
+        対策1 ->copy()を使ってコピーしてから処理する。
+        対策2 イミュータブル版を使う。
+        今回はイミュータブル版を使う
+        */
+        $this->currentDate = CarbonImmutable::today();
         $this->sevenDaysLater = $this->currentDate->addDays(7);
         $this->currentWeek = [];
 
@@ -33,7 +40,7 @@ class Calendar extends Component
         //7日分の情報を取得
         for($i = 0; $i < 7; $i++ )
         {
-            $this->day = Carbon::today()->addDays($i)->format('m月d日');
+            $this->day = CarbonImmutable::today()->addDays($i)->format('m月d日');
             array_push($this->currentWeek, $this->day);
         }
         // dd($this->currentWeek);
@@ -55,7 +62,7 @@ class Calendar extends Component
     {
         $this->currentDate = $date; //文字列
         $this->currentWeek = [];
-        $this->sevenDaysLater = Carbon::parse($this->currentDate)->addDays(7);
+        $this->sevenDaysLater = CarbonImmutable::parse($this->currentDate)->addDays(7);
 
         $this->events = EventService::getWeekEvents(
             $this->currentDate,
@@ -64,7 +71,7 @@ class Calendar extends Component
 
         for($i = 0; $i < 7; $i++ )
         {
-            $this->day = Carbon::parse($this->currentDate)->addDays($i)->format('m月d日'); // parseでCarbonインスタンスに変換後 日付を加算
+            $this->day = CarbonImmutable::parse($this->currentDate)->addDays($i)->format('m月d日'); // parseでCarbonインスタンスに変換後 日付を加算
             array_push($this->currentWeek, $this->day);
         }
     }
