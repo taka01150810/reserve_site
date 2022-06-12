@@ -13,16 +13,22 @@
         <div class="w-32">
             <div class="py-1 px-2 border border-gray-200 text-center">{{ $currentWeek[$i]['day'] }}</div>
             <div class="py-1 px-2 border border-gray-200 text-center">{{ $currentWeek[$i]['dayOfWeek'] }}</div>
+            <div class="py-1 px-2 border border-gray-200 text-center">{{ $currentWeek[$i]['checkDay'] }}</div>
         @for($j = 0; $j < 21; $j++)
             {{-- １週間通じてイベントがない可能性 --}}
             @if($events->isNotEmpty())
-            <div class="py-1 px-2 h-8 border border-gray-200">{{ \Constant::EVENT_TIME[$j] }}</div>
-            {{-- 結果
-            https://i.gyazo.com/28f4e3b6a604e0534394468c684088be.png --}}
+                {{-- イベント開始時間(DB) = 対象時間(入力した日付+時間) --}}
+                @if(!is_null($events->firstWhere('start_date', $currentWeek[$i]
+                ['checkDay'] . " " . \Constant::EVENT_TIME[$j]) ))
+                <div class="py-1 px-2 h-8 border border-gray-200 text-xs">
+                    {{ $events->firstWhere('start_date', $currentWeek[$i]['checkDay'] 
+                    . " " . \Constant::EVENT_TIME[$j])->name }}
+                </div>
+                @else
+                <div class="py-1 px-2 h-8 border border-gray-200">falseです</div>
+                @endif
             @else
             <div class="py-1 px-2 h-8 border border-gray-200"></div>
-            {{-- 結果
-            https://i.gyazo.com/068c439bda7a620d5d705f7f7a5a5427.png --}}
             @endif
         @endfor
         </div>
