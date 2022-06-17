@@ -20,10 +20,27 @@
                 {{-- イベント開始時間(DB) = 対象時間(入力した日付+時間) --}}
                 @if(!is_null($events->firstWhere('start_date', $currentWeek[$i]
                 ['checkDay'] . " " . \Constant::EVENT_TIME[$j]) ))
-                <div class="py-1 px-2 h-8 border border-gray-200 text-xs">
-                    {{ $events->firstWhere('start_date', $currentWeek[$i]['checkDay'] 
-                    . " " . \Constant::EVENT_TIME[$j])->name }}
+                @php
+                $eventName = $events->firstWhere('start_date', $currentWeek[$i]['checkDay'] 
+                . " " . \Constant::EVENT_TIME[$j])->name;
+                $eventInfo = $events->firstWhere('start_date', $currentWeek[$i]['checkDay'] 
+                . " " .\Constant::EVENT_TIME[$j]);
+                $eventPeriod = \Carbon\Carbon::parse($eventInfo->start_date)
+                ->diffInMinutes($eventInfo->end_date) / 30 - 1;//差分
+                @endphp
+                <div class="py-1 px-2 h-8 border border-gray-200 text-xs bg-blue-900">
+                    {{ $eventName }}
                 </div>
+                @if( $eventPeriod > 0)
+                    @for($k = 0; $k < $eventPeriod; $k++)
+                    <div class="py-1 px-2 h-8 border border-gray-200 bg-blue-900"></div>
+                    @endfor
+                    @php
+                    $j += $eventPeriod
+                    @endphp
+                @endif
+                {{-- 結果
+                https://gyazo.com/16269994063effa69b196ba8f7472ef7 --}}
                 @else
                 <div class="py-1 px-2 h-8 border border-gray-200"></div>
                 @endif
@@ -33,11 +50,5 @@
         @endfor
         </div>
         @endfor
-        {{-- 結果
-        https://i.gyazo.com/5809fef3be722796b14b9cb85e767f26.png 
-        --}}
     </div>
-    @foreach($events as $event)
-    {{ $event->start_date }}<br>
-    @endforeach
 </div>
