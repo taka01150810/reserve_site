@@ -98,9 +98,9 @@ class Calendar extends Component
 
         for($i = 0; $i < 7; $i++ )
         {
-            $this->day = CarbonImmutable::parse($this->currentDate)->addDays($i)->format('m月d日'); // parseでCarbonインスタンスに変換後 日付を加算
-            $this->checkDay = CarbonImmutable::today()->addDays($i)->format('Y-m-d');
-            $this->dayOfWeek = CarbonImmutable::today()->addDays($i)->dayName; 
+            $this->day = CarbonImmutable::parse($this->currentDate)->addDays($i)->format('m月d日');
+            $this->checkDay = CarbonImmutable::parse($this->currentDate)->addDays($i)->format('Y-m-d');
+            $this->dayOfWeek = CarbonImmutable::parse($this->currentDate)->addDays($i)->dayName;
             array_push($this->currentWeek,[// 連想配列に変更
                 'day' => $this->day,//カレンダー表示用(○月△日)
                 'checkDay' => $this->checkDay, //判定用(○○○○-△△-□□)
