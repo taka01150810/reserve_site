@@ -45,7 +45,8 @@ Route::prefix('manager')
 });
 
 Route::middleware('can:user-higher')->group(function(){
-    Route::get('/dashboard', [ReservationController::class, 'dashboard' ])->name('dashboard'); 
+    Route::get('/dashboard', [ReservationController::class, 'dashboard' ])->name('dashboard');
+    Route::get('/{id}', [ ReservationController::class, 'detail' ] )->name('events.detail');
 });
 
 //Laravel9からcontrollerでまとめる事ができる 
