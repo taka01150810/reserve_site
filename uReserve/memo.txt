@@ -77,4 +77,11 @@ DBに情報保存時やDBから情報取得時に
 週間カレンダー
 選択日を含む7日間を表示
 10時～20時 30分単位(Flatpickr設定)
-Livewireで作成 
+Livewireで作成
+
+補足:もしdashboardを変えたい場合
+1.HOME定数を変更する
+app/Providers/RouteServiceProvider.php
+public const HOME = '/dashboard';
+2.変更した定数名でBladeファイルを作成
+3.routes/web.phpのroute名も合わせて変更

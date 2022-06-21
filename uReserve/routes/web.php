@@ -5,6 +5,7 @@ use App\Http\Controllers\LivewireTestController;
 use App\Http\Controllers\AlpineTestController;
 use App\Http\Controllers\AlpineController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +22,16 @@ Route::get('/', function () {
     return view('calendar');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+//今回は API認証は使わない
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
 
 /*
 ルーティングは上から処理される
@@ -43,9 +45,7 @@ Route::prefix('manager')
 });
 
 Route::middleware('can:user-higher')->group(function(){
-    Route::get('index', function () {
-        dd('user');
-    });
+    Route::get('/dashboard', [ReservationController::class, 'dashboard' ])->name('dashboard'); 
 });
 
 //Laravel9からcontrollerでまとめる事ができる 
