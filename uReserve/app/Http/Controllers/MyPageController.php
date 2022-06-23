@@ -8,6 +8,7 @@ use App\Models\Reservation;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
 use App\Services\MyPageService;
+use Carbon\Carbon;
 
 class MyPageController extends Controller
 {
@@ -33,5 +34,19 @@ class MyPageController extends Controller
         // dd($reservation);
         return view('mypage/show', compact('event', 'reservation'));
     } 
+
+    public function cancel($id)
+    {
+        $reservation = Reservation::where('user_id', '=', Auth::id())
+        ->where('event_id', '=', $id)
+        ->first();
+
+        //キャンセルした日時
+        $reservation->canceled_date = Carbon::now()->format('Y-m-d H:i:s');
+        $reservation->save();
+
+        session()->flash('status', 'キャンセルできました。');
+        return to_route('dashboard');
+    }
 
 }

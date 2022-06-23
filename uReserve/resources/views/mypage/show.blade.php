@@ -16,8 +16,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{-- <form method="get" action="{{ route('events.edit', ['event' => $event->id]) }}"> --}}
                         
                         <div>
                             <x-jet-label for="event_name" value="イベント名" />
@@ -44,21 +42,30 @@
                                 {{ $event->endTime }}
                             </div>
                         </div>
-
+                    <form id="cancel_{{ $event->id }}" method="post" action="{{ route('mypage.cancel', ['id' => $event->id] )}}">
+                        @csrf
                         <div class="md:flex justify-between items-end">
                             <div class="mt-4">
                                 <x-jet-label value="予約人数" />
                                 {{ $reservation->number_of_people }}
                             </div>
-                            @if($event->eventDate < \Carbon\Carbon::today()->format('Y年m月d日'))
-                            <x-jet-button class="ml-4">
-                             キャンセルする
-                            </x-jet-button>
-                            @endif 
+                            @if($event->eventDate >= \Carbon\Carbon::today()->format('Y年m月d日'))
+                            <a href="#" data-id="{{ $event->id }}" onclick="cancelPost(this)" class="ml-4 bg-black text-white py-2 px-4">
+                                キャンセルする
+                            </a>
+                            @endif
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function cancelPost(e) {
+        'use strict';
+        if (confirm('本当にキャンセルしてもよろしいですか？')) {
+            document.getElementById('cancel_' + e.dataset.id).submit();
+        }
+        }
+    </script> 
 </x-app-layout>
