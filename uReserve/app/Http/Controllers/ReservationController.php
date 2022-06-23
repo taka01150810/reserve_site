@@ -30,12 +30,12 @@ class ReservationController extends Controller
 
         //予約可能な人数=最大定員-予約済みの人数(キャンセルを除く)
         if(!is_null($reservedPeople)){
-            $resevablePeople = $event->max_people - $reservedPeople->number_of_people;
+            $reservablePeople = $event->max_people - $reservedPeople->number_of_people;
         } else {
-            $resevablePeople = $event->max_people;
+            $reservablePeople = $event->max_people;
         } 
 
-        return view('event-detail', compact('event', 'resevablePeople'));
+        return view('event-detail', compact('event', 'reservablePeople'));
     }
 
     public function reserve(Request $request)
