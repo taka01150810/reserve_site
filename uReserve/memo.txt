@@ -85,3 +85,7 @@ app/Providers/RouteServiceProvider.php
 public const HOME = '/dashboard';
 2.変更した定数名でBladeファイルを作成
 3.routes/web.phpのroute名も合わせて変更
+
+予約済みイベントは再度予約できない。キャンセルしていたら再度予約可能。
+created_atが最新のレコードが最新の情報
+created_atが最新の情報を取得

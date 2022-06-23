@@ -30,6 +30,7 @@ class MyPageController extends Controller
         $event = Event::findOrFail($id);
         $reservation = Reservation::where('user_id', '=', Auth::id())
         ->where('event_id', '=', $id)
+        ->latest() //引数なしだとcreated_atが新しい順
         ->first();
         // dd($reservation);
         return view('mypage/show', compact('event', 'reservation'));
@@ -39,6 +40,7 @@ class MyPageController extends Controller
     {
         $reservation = Reservation::where('user_id', '=', Auth::id())
         ->where('event_id', '=', $id)
+        ->latest() //引数なしだとcreated_atが新しい順
         ->first();
 
         //キャンセルした日時
