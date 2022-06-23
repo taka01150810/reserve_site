@@ -18,6 +18,7 @@ class MyPageController extends Controller
         $fromTodayEvents = MyPageService::reservedEvent($events, 'fromToday');
         $pastEvents = MyPageService::reservedEvent($events, 'past');
         // dd($fromTodayEvents, $pastEvents);
-        //結果 https://gyazo.com/341f03cc27b3c957e4d57b56ab2e3a03
+        //結果 https://gyazo.com/69fe46eff17865a0762a0911f2d22045
+        return view('mypage/index', compact('fromTodayEvents', 'pastEvents'));
     }
 }
