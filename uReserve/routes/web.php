@@ -54,6 +54,9 @@ Route::middleware('can:user-higher')->group(function(){
     Route::post('/{id}', [ ReservationController::class, 'reserve' ] )->name('events.reserve');
 });
 
+//未ログイン時で詳細ページを見ようとするとloginページに移動
+Route::middleware('auth')->get('/{id}', [ ReservationController::class, 'detail' ] )->name('events.detail');
+
 //Laravel9からcontrollerでまとめる事ができる 
 //name('?')でname('?.〜')をまとめることができる。
 Route::controller(LivewireTestController::class)
