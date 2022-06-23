@@ -20,6 +20,7 @@
                 {{-- イベント開始時間(DB) = 対象時間(入力した日付+時間) --}}
                 @if(!is_null($events->firstWhere('start_date', $currentWeek[$i]
                 ['checkDay'] . " " . \Constant::EVENT_TIME[$j]) ))
+<<<<<<< HEAD
                 @php
                 $eventId = $events->firstWhere('start_date', $currentWeek[$i]['checkDay'] 
                 . " " . \Constant::EVENT_TIME[$j])->id;
@@ -47,6 +48,14 @@
                 https://gyazo.com/16269994063effa69b196ba8f7472ef7 --}}
                 @else
                 <div class="py-1 px-2 h-8 border border-gray-200"></div>
+=======
+                <div class="py-1 px-2 h-8 border border-gray-200 text-xs">
+                    {{ $events->firstWhere('start_date', $currentWeek[$i]['checkDay'] 
+                    . " " . \Constant::EVENT_TIME[$j])->name }}
+                </div>
+                @else
+                <div class="py-1 px-2 h-8 border border-gray-200">falseです</div>
+>>>>>>> d4efc05a43bed9f88866771412a401051cbaa5cf
                 @endif
             @else
             <div class="py-1 px-2 h-8 border border-gray-200"></div>
